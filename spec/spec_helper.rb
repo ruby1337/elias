@@ -13,3 +13,9 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
+
+RSpec.configure do |config|
+  config.when_first_matching_example_defined :db do
+    require 'database_helper'
+  end
+end

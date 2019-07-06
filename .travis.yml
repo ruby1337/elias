@@ -1,5 +1,12 @@
 language: ruby
 rvm:
 - 2.6.3
-before_install: gem install bundler
+services:
+  - postgresql
+before_install:
+  - gem install bundler
+  - source .env.test
+  - psql -c 'create database elias_test;' -U postgres
+before_script:
+  - ./bin/migrate
 script: bundle exec rspec spec/
