@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bundle exec sequel $DATABASE_URL -m db/changes

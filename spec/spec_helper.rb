@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+
 require_relative '../boot'
 
 RSpec.configure do |config|
@@ -12,4 +15,10 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+end
+
+RSpec.configure do |config|
+  config.when_first_matching_example_defined :db do
+    require 'database_helper'
+  end
 end
